@@ -2,10 +2,10 @@ module.exports = {
     
     check: function () {
         
-        var harvesterAmount = 20;
-        var builderAmount = 2;
+        var harvesterAmount = 4;
+        var builderAmount = 3;
         var upgraderAmount = 2;
-        var attackerAmount = 2;
+        var attackerAmount = 10;
         
         
         

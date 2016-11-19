@@ -7,6 +7,11 @@ module.exports = {
         var upgraderAmount = 2;
         var attackerAmount = 2;
         
+        var sHar = false;
+        var sUp = false;
+        var sAtt = false;
+        var sBuil = false;
+        
         
         
         for(var name in Memory.creeps) {
@@ -16,24 +21,29 @@ module.exports = {
             }
         }
         
-        var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-        var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-        var attackers = _.filter(Game.creeps, (creep) => creep.memory.role == 'attacker');
+        var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester').length;
+        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder').length;
+        var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader').length;
+        var attackers = _.filter(Game.creeps, (creep) => creep.memory.role == 'attacker').length;
         
-        if (harvesters.length < harvesterAmount) {
+        if (harvesters < harvesterAmount) {
             var name = Game.spawns['Spawn1'].createCreep([MOVE, WORK, WORK, CARRY], undefined, { role: 'harvester' } );
-            console.log('Spawning new harvester: ', name);
-        } else if (upgraders.length < upgraderAmount) {
+            sHar = true;
+        } else if (upgraders < upgraderAmount) {
             var name = Game.spawns['Spawn1'].createCreep([MOVE, WORK, WORK, CARRY], undefined, { role: 'upgrader' } );
-            console.log('Spawning new upgrader: ', name);
-        } else if (attackers.length < attackerAmount) {
+            sUp = true;
+        } else if (attackers < attackerAmount) {
             var name = Game.spawns['Spawn1'].createCreep([MOVE, MOVE, ATTACK, ATTACK], undefined, { role: 'attacker' } );
-            console.log('Spawning new attacker: ', name);
-        } else if (builders.length < builderAmount) {
+            sAtt = true;
+        } else if (builders < builderAmount) {
             var name = Game.spawns['Spawn1'].createCreep([MOVE, WORK, WORK, CARRY], undefined, { role: 'builder' } );
-            console.log('Spawning new builder: ', name);
+            sBuil = true;
         }
+        
+        console.log('Harvester:\n\tExpected: ' + harvesterAmount, 'Alive:', harvesters, sHar ? 'Spawning...' : ' ',
+                    '\nUpgrader:\n\tExpected:', upgraderAmount, 'Alice:', upgraders, sUp ? 'Spawning...' : ' ',
+                    '\nAttacker:\n\tExpected:', attackerAmount, 'Alive:', attackers, sAtt ? 'Spawning...' : ' ',
+                    '\nBuilder:\n\tExpected:', builderAmount, 'Alive:', builders, sBuil ? 'Spawning...' : ' ');
     }
     
 };
