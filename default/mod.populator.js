@@ -5,7 +5,7 @@ module.exports = {
         var harvesterAmount = 4;
         var builderAmount = 3;
         var upgraderAmount = 2;
-        var attackerAmount = 2;
+        var attackerAmount = 5;
         
         var sHar = false;
         var sUp = false;
@@ -40,10 +40,11 @@ module.exports = {
             sBuil = true;
         }
         
-        console.log('Harvester:\n\tExpected: ' + harvesterAmount, 'Alive:', harvesters, sHar ? 'Spawning...' : ' ',
-                    '\nUpgrader:\n\tExpected:', upgraderAmount, 'Alice:', upgraders, sUp ? 'Spawning...' : ' ',
-                    '\nAttacker:\n\tExpected:', attackerAmount, 'Alive:', attackers, sAtt ? 'Spawning...' : ' ',
-                    '\nBuilder:\n\tExpected:', builderAmount, 'Alive:', builders, sBuil ? 'Spawning...' : ' ');
+        console.log('Creeps: Excpected:', (harvesterAmount+builderAmount+upgraderAmount+attackerAmount), 'Alive:', (harvesters+builders+upgraders+attackers),
+                    '\n\tHarvester:\n\t\tExpected:', harvesterAmount, 'Alive:', harvesters, sHar ? 'Spawning...' : ' ',
+                    '\n\tUpgrader:\n\t\tExpected:', upgraderAmount, 'Alive:', upgraders, sUp ? 'Spawning...' : ' ',
+                    '\n\tAttacker:\n\t\tExpected:', attackerAmount, 'Alive:', attackers, sAtt ? 'Spawning...' : ' ',
+                    '\n\tBuilder:\n\t\tExpected:', builderAmount, 'Alive:', builders, sBuil ? 'Spawning...' : ' ');
     }
     
 };

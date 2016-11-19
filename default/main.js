@@ -26,11 +26,8 @@ module.exports.loop = function () {
     
     if (enemies.length > 0) {
         console.log('ALERT!, ', enemies.length, ' hostile creeps have been found!');
-        for (let enemy in enemies) {
-            console.log('\t' + enemies[enemy].name);
-            for (let vname in enemies[enemy].memory) {
-                console.log('\t\t', vname + ':', enemies[enemy].memory[vname]);
-            }
+        for (let vname in enemies) {
+            console.log('\t' + enemies[vname].owner.username)
         }
     } else {
         console.log('No hostile creeps detected');
